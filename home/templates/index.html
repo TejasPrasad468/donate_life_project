@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blood Donation {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<style>
+.bg-light{
+  background-color:  rgb(236, 220, 244);
+}
+</style>
+<div class="container-fluid position-relative overflow-hidden mb-4 mb-sm-0" style="min-height: 95vh;">
+      
+  <div class="container mt-xl-5 mt-lg-5">
+    <div class="row pt-xl-5 pt-lg-5 d-sm-flex flex-column-reverse flex-lg-row text-center text-md-start">
+      <div class="col-xl-6 col-lg-7 pt-xl-5 mt-xl-5 mt-lg-5">
+        <h3 class="h3 fw-semibold opacity-75">
+          <span id="typed"></span>
+        </h3>
+
+        <h1 class="h1 fw-bold">Find your <span class="d-block d-sm-inline gunmetal px-2 text-white rounded" style="text-decoration-style:bolder; background-color:black;">blood requirements</span> easily</h1>
+        <p class="fs-6 fw-medium w-75 width-100-important opacity-75">
+          Tears of a mother cannot save her child but ur blood can</p>
+          {% comment %} <div class="btn-group" role="group" aria-label="Basic example">
+            <button href="/home/templates/become_donor.html" type="button" class="btn btn-primary m-2">Donate</button>
+            <button href="./Receive.html" type="button" class="btn btn-primary m-2">Receive</button>
+          </div> {% endcomment %}
+      </div>
+      <div class="col-xl-5 col-lg-5 mt-lg-4 ml-3 position-relative">
+        <img src="{% static 'home/images/hero.svg' %}" alt="" class="img-fluid scale-up">
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+<h1>Available Donors According To Blood Group</h1>
+  <div class="album py-5 bg-light" >
+    <div class="container">
+      <div class="row">
+        {% for i in all_group %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm border-danger">
+            <div class="card-body">
+              <h3 class="card-text">Blood Group: {{i.name}}</h3>
+              <h3 class="card-text">Total Donor: {{i.total}}</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/donors_list/{{i.id}}/" class="btn btn-sm btn-outline-danger">View All Donors</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
